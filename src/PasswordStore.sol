@@ -10,9 +10,9 @@ pragma solidity 0.8.18; //q is this the latest version?
 contract PasswordStore {
     error PasswordStore__NotOwner();
 
-    address private s_owner;
+    address private s_owner; // 0 
     // @audit the s_password variable is not private, this is not a safe place to store your password
-    string private s_password;
+    string private s_password; // 1
 
     event SetNetPassword();
 
@@ -34,7 +34,7 @@ contract PasswordStore {
 
     /*
      * @notice This allows only the owner to retrieve the password.
-     //@audit there is no newPassword parameter
+     // @audit there is no newPassword parameter
      * @param newPassword The new password to set.
      */
     function getPassword() external view returns (string memory) {
